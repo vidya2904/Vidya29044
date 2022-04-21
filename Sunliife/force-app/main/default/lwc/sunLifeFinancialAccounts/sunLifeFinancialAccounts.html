@@ -1,0 +1,25 @@
+<!-- apexContactsForAccount.html -->
+<template>
+    <lightning-card title="Financial Services Account Listing" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <lightning-input type="search" label="Search Account" onchange={handleSearch}></lightning-input><br/><br/>
+            <br/>
+            <template if:true={data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={availableAccounts}
+                    columns={columns}
+                    onsave={handleSave}
+                    sorted-by={sortBy}
+                                     sorted-direction={sortDirection}
+                                     onsort={doSorting}
+                                     hide-checkbox-column="true"
+                    draft-values={draftValues}>
+                </lightning-datatable>
+            </template>
+            <template if:true={error}>
+                <!-- handle Apex error -->
+            </template>
+        </div>
+    </lightning-card>
+</template>
